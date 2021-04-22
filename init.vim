@@ -1,0 +1,214 @@
+"-- Plugin ----------------------------------------------------------------------
+" Plugins will be downloaded under the specified directory.
+call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+" Tools
+    Plug 'airblade/vim-gitgutter'
+    Plug 'junegunn/goyo.vim'
+    Plug 'vifm/vifm.vim'
+    Plug 'terryma/vim-multiple-cursors'
+"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'ctrlpvim/ctrlp.vim'
+"    Plug 'tpope/vim-fugitive'  "for git-branch in airline
+" Status bar
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+"    Plug 'itchyny/lightline.vim'
+" NERDTree
+    Plug 'preservim/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
+" Syntax
+    Plug 'tpope/vim-markdown'
+    Plug 'vim-scripts/fountain.vim'
+" Color-schems
+    Plug 'morhetz/gruvbox'
+    Plug 'connorholyday/vim-snazzy'
+    Plug 'dracula/vim'
+
+" Declare the list of plugins.
+    Plug 'tpope/vim-sensible'
+    Plug 'junegunn/seoul256.vim'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+"-- Default setup, but I'll not use ---------------------------------------------
+"set runtimepath^=~/.vim runtimepath+=~/.vim/after
+"    let &packpath = &runtimepath
+"    source ~/.vimrc
+
+"-- Setupt for vim --------------------------------------------------------------
+augroup MyColors
+    autocmd!
+"snazzy
+"    autocmd ColorScheme * highlight LineNR guifg='#848688' guibg='#3a3d4d' gui='bold'
+"                      \ | highlight CursorLineNR guifg='#ff5c57' gui='bold' 
+"dracula
+    autocmd ColorScheme * highlight LineNR guibg='#282A36' ctermbg=236 gui='bold' cterm='bold'
+                      \ | highlight CursorLineNR guifg='#FF79C6' ctermfg=212 gui='bold' cterm='bold' 
+                      \ | highlight Normal guibg='#21222C' ctermbg=235
+augroup END
+"colorscheme snazzy
+colorscheme dracula
+
+"setting line number
+set number relativenumber
+set rnu
+"set nu
+highlight LineNr ctermbg=238   "Only works without colorscheme
+
+"set ai cindent
+"set ts=4 sw=4 tw=0
+syntax enable
+"colo delek
+"set fencs=utf-8,korea
+set paste
+set nocompatible
+"set backup
+"set backupdir=~/backup
+set history=999
+set ignorecase
+"set smartcase
+"set smartindent
+set expandtab ts=4 sw=4
+set hlsearch
+""set incsearch
+set showmatch
+set textwidth=300
+"set paste
+set autoread  "reload file by :e
+"set mouse=a
+
+" Cursor line
+set cursorline
+
+" Yank to clipboard (You must install xsel in SSH server to work in SSH session)
+set clipboard+=unnamedplus
+
+" Fortran syntax
+let fortran_free_source=1
+let fortran_have_tabs=1
+let fortran_more_precise=1
+let fortran_do_enddo=1
+
+" Add column end
+set colorcolumn=81
+highlight ColorColumn ctermbg=238    "Only works without colorscheme
+highlight ColorColumnNR ctermfg=red  "Only works without colorscheme
+
+" Saturn like status bar setup
+set laststatus=2  "always show statusbare
+"set statusline=%F\ %m%h%r%=\ %M\ [TYPE=%Y]\ [BUF=%n/%{bufnr('$')}]\ [POS=%l,%v]\ [LEN=%L]\ [%p%%]
+"set statusline=%F\ %m%h%r%=\ [FORMAT=%{&ff},%{&fenc}]\ [TYPE=%Y]\ [POS=%l,%v]\ [LEN=%L]\ [%p%%]
+"set statusline=%F\ %m%h%r%=\ [FORMAT=%{&ff},%{&fenc}]\ [TYPE=%Y]\[BUF=%n/%{bufnr('$')}]\ [POS=%l,%v]\ [LEN=%L]\ [%p%%]
+
+"autocmd BufRead,BufNewFile *.txt colo evening
+""au FileType txt colo evening
+"au BufRead,BufNewFile *.c,*.cpp,*.cc,*.cxx,*.C colo morning|set ts=2 sw=2
+"au SwapExists * let v:swapchoice = 'o'
+
+" Restart from the location where vim was terminated
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
+"-- keybinding ------------------------------------------------------------------
+map <C-s> :source ~/.config/nvim/init.vim<CR>
+"map <C-n> :EditVifm .<CR>
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
+
+" for split
+nnoremap <C-h> <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+
+" for NERDTree
+map <C-o> :NERDTreeToggle<CR>
+
+" old
+"ia time0    <C-R>=strftime(%Y.%m.%d-%H:%M:%S")<CR>
+"nmap <F2>   :up<CR>
+"nmap <F3>   :e.<CR>
+"nmap <C-L>  <ESC>q/
+"imap <C-D>  <C-R>=strftime("%Y.%m.%d-%H:%M:%S")<CR>
+"vmap <C-C>  y
+
+
+"-- lightline configuration -----------------------------------------------------
+let g:lightline = {
+    \ 'colorscheme': 'powerline',
+    \ 'active': {
+        \ 'left': [ [ 'mode', 'paste' ],
+        \ [ 'readony', 'myfilename', 'filetype', 'modified' ] ],
+        \ 'right': [ [ 'mylineinfo', 'mylen', 'percent' ] ]
+    \ },
+    \ 'component': {
+        \ 'filename': '%F',
+    \ },
+    \ 'component_function': {
+        \ 'mylineinfo': "MyLineinfo",
+        \ 'mylen': "MyLineLength",
+        \ 'myfilename': 'MyLightlineFilename',
+    \ },
+    \ }
+function! MyLineinfo()
+  return 'POS=' . line('.') . ',' . col('.')
+endfunction
+function! MyLineLength()
+  return  'LEN=' . line('$')
+endfunction
+function! MyLightlineFilename()
+  let l:fname = expand('%:p')
+  if len(fname) < winwidth(0)-60
+    return fname
+  endif
+  return '...' . fname[len(fname)-(winwidth(0)-60):]
+endfunction
+
+"-- airline configuration -------------------------------------------------------
+let g:airline_theme='dracula'
+let g:airline_extensions = ['branch', 'tabline']
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 0
+
+let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#%#__accent_bold#%#__restore__#%#__accent_bold#%#__restore__#'
+
+"function! AirlineInit()
+"    let g:airline_section_c = airline#section#create([expand('%:p')])
+"endfunction
+"autocmd VimEnter * call AirlineInit()
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline                                            
+"let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+"let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)      
+"let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab                                                    
+"let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right                                                           
+"let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline                                                 
+"let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline                                  
+"let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline               
+"let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers                                                              
+"let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+
+
+"-- NERDTree configuration ------------------------------------------------------
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+"-- CtrlP configuration ---------------------------------------------------------
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.f90.d,*.mod,*.proxy,*.inc     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
