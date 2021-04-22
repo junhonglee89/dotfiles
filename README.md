@@ -61,6 +61,7 @@ brew install tmux
 ```
 - tpm
 tmux plugin manager
+https://github.com/tmux-plugins/tpm \
 ```shell
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
