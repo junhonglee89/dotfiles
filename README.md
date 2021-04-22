@@ -25,6 +25,7 @@ ln -sf $dotfiles/init.vim ./
 
 ### Usage for plugins
 #### NERDTree
+https://github.com/preservim/nerdtree \
 `<C-o>`  open NERDTree (keymapping) \
 `<C-h>`  move cursor to NERDTree \
 `<C-l>`  move cursor to vim \
