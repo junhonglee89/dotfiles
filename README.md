@@ -30,7 +30,7 @@ ln -sf $dotfiles/init.vim ./
 `<C-l>`  move cursor to vim \
 `<C-I>`  show hiden file
 #### multi-cursor
-https://github.com/terryma/vim-multiple-cursors
+https://github.com/terryma/vim-multiple-cursors \
 `<C-n>`  start multi-cursor and select the word on the cursor \
 `<C-n>`  select the next word \
 `<C-x>`  skip the next word \
@@ -43,7 +43,7 @@ https://github.com/terryma/vim-multiple-cursors
 `:vsp`   vert split \
 `<C-h,j,k,l>` navigate between splited plains
 #### CtrlP
-https://github.com/ctrlpvim/ctrlp.vim
+https://github.com/ctrlpvim/ctrlp.vim \
 `<C-p>`   open finder
 `<C-j,k>` navigate
 
