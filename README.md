@@ -1,4 +1,6 @@
 # dotfiles
+<img width="2117" alt="screenshot" src="https://user-images.githubusercontent.com/38967412/115830757-09c16280-a411-11eb-8cc5-be559447b6d9.png">
+
 ## init.vim
 ### Prerequisite
 - neovim
