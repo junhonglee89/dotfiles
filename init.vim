@@ -20,6 +20,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Syntax
     Plug 'tpope/vim-markdown'
     Plug 'vim-scripts/fountain.vim'
+    Plug 'ap/vim-css-color'           "Display a preview of colors with CSS
 " Color-schems
     Plug 'morhetz/gruvbox'
     Plug 'connorholyday/vim-snazzy'
