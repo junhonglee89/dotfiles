@@ -116,6 +116,13 @@ endif
 "-- keybinding ------------------------------------------------------------------
 map <C-s> :source ~/.config/nvim/init.vim<CR>
 "map <C-n> :EditVifm .<CR>
+map <C-q> :q<CR>
+map <C-w> :w<CR>
+map <C-e> :wq<CR>
+map <F1> :set spell<CR>
+map <F2> :set nospell<CR>
+
+" move selected line
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
