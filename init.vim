@@ -114,13 +114,21 @@ if has("autocmd")
 endif
 
 "-- keybinding ------------------------------------------------------------------
+let mapleader = ","
 map <C-s> :source ~/.config/nvim/init.vim<CR>
 "map <C-n> :EditVifm .<CR>
-map <C-q> :q<CR>
-map <C-w> :w<CR>
-map <C-e> :wq<CR>
-map <F1> :set spell<CR>
-map <F2> :set nospell<CR>
+
+" quit, save, and save & quit
+map <leader>q :q<CR>
+map <leader>w :w<CR>
+map <leader>e :wq<CR>
+
+" spell chek on/off
+map <leader>1 :set spell<CR>
+map <leader>2 :set nospell<CR>
+
+"
+nnoremap <leader>/ :nohlsearch<CR>
 
 " move selected line
 xnoremap K :move '<-2<CR>gv-gv
