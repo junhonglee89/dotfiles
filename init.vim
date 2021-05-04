@@ -6,9 +6,10 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'junegunn/goyo.vim'
     Plug 'vifm/vifm.vim'
     Plug 'terryma/vim-multiple-cursors'
-"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'junegunn/fzf'
+"    Plug 'ctrlpvim/ctrlp.vim'
 "    Plug 'tpope/vim-fugitive'  "for git-branch in airline
+"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Status bar
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
@@ -127,6 +128,10 @@ map <leader>e :wq<CR>
 map <leader>1 :set spell<CR>
 map <leader>2 :set nospell<CR>
 
+" for fzf
+map <C-f> :FZF<CR>
+map <C-p> :FZF ~<CR>
+
 "
 nnoremap <leader>/ :nohlsearch<CR>
 
@@ -228,3 +233,33 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
+"-- fzf configuration -----------------------------------------------------------
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+"" Customize fzf colors to match your color scheme
+"" - fzf#wrap translates this to a set of `--color` options
+"let g:fzf_colors =
+"\ { 'fg':      ['fg', 'Normal'],
+"  \ 'bg':      ['bg', 'Normal'],
+"  \ 'hl':      ['fg', 'Comment'],
+"  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"  \ 'hl+':     ['fg', 'Statement'],
+"  \ 'info':    ['fg', 'PreProc'],
+"  \ 'border':  ['fg', 'Ignore'],
+"  \ 'prompt':  ['fg', 'Conditional'],
+"  \ 'pointer': ['fg', 'Exception'],
+"  \ 'marker':  ['fg', 'Keyword'],
+"  \ 'spinner': ['fg', 'Label'],
+"  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history
+" - History files will be stored in the specified directory
+" - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
+"   'previous-history' instead of 'down' and 'up'.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
