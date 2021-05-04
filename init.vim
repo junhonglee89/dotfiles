@@ -119,7 +119,7 @@ map <C-s> :source ~/.config/nvim/init.vim<CR>
 "map <C-n> :EditVifm .<CR>
 
 " quit, save, and save & quit
-map <leader>q :q<CR>
+map <leader>q :q!<CR>
 map <leader>w :w<CR>
 map <leader>e :wq<CR>
 
