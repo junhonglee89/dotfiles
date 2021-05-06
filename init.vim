@@ -7,6 +7,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'vifm/vifm.vim'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
 "    Plug 'ctrlpvim/ctrlp.vim'
 "    Plug 'tpope/vim-fugitive'  "for git-branch in airline
 "    Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -129,8 +130,10 @@ map <leader>1 :set spell<CR>
 map <leader>2 :set nospell<CR>
 
 " for fzf
-map <C-f> :FZF<CR>
-map <C-p> :FZF ~<CR>
+"map <C-f> :FZF<CR>
+"map <C-p> :FZF ~<CR>
+map <C-f> :Files<CR>
+map <C-p> :Files ~<CR>
 
 "
 nnoremap <leader>/ :nohlsearch<CR>
