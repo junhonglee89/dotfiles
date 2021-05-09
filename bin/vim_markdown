@@ -1,10 +1,13 @@
 #!/bin/bash
 
 if [ ! -f "$1" ]; then 
+
+ln -sf $HOME/dotfiles/github-markdown.css ./.github-markdown.css
+
 cat << EOF > $1
 <!--- github markdown: {{{ --->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="$HOME/dotfiles/github-markdown.css">
+<link rel="stylesheet" href=".github-markdown.css">
 <style>
 	.markdown-body {
 		box-sizing: border-box;
