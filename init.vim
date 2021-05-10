@@ -163,6 +163,11 @@ map <leader>m :MarkdownPreview<CR>
 "imap <C-D>  <C-R>=strftime("%Y.%m.%d-%H:%M:%S")<CR>
 "vmap <C-C>  y
 
+"{{{-- Goyo configuration ----------------------------------------------------------
+"auto-load Goyo for Markdown
+autocmd vimenter *.md Goyo
+"}}}
+
 "{{{-- lightline configuration -----------------------------------------------------
 let g:lightline = {
     \ 'colorscheme': 'powerline',
