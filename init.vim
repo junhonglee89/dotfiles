@@ -168,7 +168,7 @@ map <leader>m :MarkdownPreview<CR>
 "vmap <C-C>  y
 
 
-"-- lightline configuration -----------------------------------------------------
+"{{{-- lightline configuration -----------------------------------------------------
 let g:lightline = {
     \ 'colorscheme': 'powerline',
     \ 'active': {
@@ -198,8 +198,9 @@ function! MyLightlineFilename()
   endif
   return '...' . fname[len(fname)-(winwidth(0)-60):]
 endfunction
+"}}}
 
-"-- airline configuration -------------------------------------------------------
+"{{{-- airline configuration -------------------------------------------------------
 let g:airline_theme='dracula'
 let g:airline_extensions = ['branch', 'tabline']
 let g:airline_powerline_fonts = 1
@@ -223,14 +224,15 @@ let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end o
 "let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline               
 "let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers                                                              
 "let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+"}}}
 
-
-"-- NERDTree configuration ------------------------------------------------------
+"{{{-- NERDTree configuration ------------------------------------------------------
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
+"}}}
 
-"-- CtrlP configuration ---------------------------------------------------------
+"{{{-- CtrlP configuration ---------------------------------------------------------
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -244,8 +246,9 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+"}}}
 
-"-- fzf configuration -----------------------------------------------------------
+"{{{-- fzf configuration -----------------------------------------------------------
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -274,8 +277,9 @@ let g:fzf_action = {
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+"}}}
 
-"-- Markdown preview configuration ----------------------------------------------
+"{{{-- Markdown preview configuration ----------------------------------------------
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 0
@@ -366,3 +370,4 @@ let g:mkdp_page_title = '「${name}」'
 " recognized filetypes
 " these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
+"}}}
