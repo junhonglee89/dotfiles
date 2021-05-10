@@ -27,23 +27,19 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
     Plug 'vim-scripts/fountain.vim'
     Plug 'ap/vim-css-color'           "Display a preview of colors with CSS
 " Color-schems
-    Plug 'morhetz/gruvbox'
-    Plug 'connorholyday/vim-snazzy'
+"    Plug 'morhetz/gruvbox'
+"    Plug 'connorholyday/vim-snazzy'
+"    Plug 'junegunn/seoul256.vim'
     Plug 'dracula/vim'
 
 " Declare the list of plugins.
     Plug 'tpope/vim-sensible'
-    Plug 'junegunn/seoul256.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-"-- Default setup, but I'll not use ---------------------------------------------
-"set runtimepath^=~/.vim runtimepath+=~/.vim/after
-"    let &packpath = &runtimepath
-"    source ~/.vimrc
-
 "-- Setupt for vim --------------------------------------------------------------
+"specific color
 augroup MyColors
     autocmd!
 "snazzy
@@ -166,7 +162,6 @@ map <leader>m :MarkdownPreview<CR>
 "nmap <C-L>  <ESC>q/
 "imap <C-D>  <C-R>=strftime("%Y.%m.%d-%H:%M:%S")<CR>
 "vmap <C-C>  y
-
 
 "{{{-- lightline configuration -----------------------------------------------------
 let g:lightline = {
