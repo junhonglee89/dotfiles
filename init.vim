@@ -155,6 +155,9 @@ map <C-o> :NERDTreeToggle<CR>
 " for Markdown preview
 map <leader>m :MarkdownPreview<CR>
 
+" refresh buffer
+map <leader>r :e<CR>
+
 " old
 "ia time0    <C-R>=strftime(%Y.%m.%d-%H:%M:%S")<CR>
 "nmap <F2>   :up<CR>
@@ -166,6 +169,14 @@ map <leader>m :MarkdownPreview<CR>
 "{{{-- Goyo configuration ----------------------------------------------------------
 "auto-load Goyo for Markdown
 autocmd vimenter *.md Goyo
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+function! s:goyo_enter()
+    set eventignore=FocusGained
+endfunction
+function! s:goyo_leave()
+    set eventignore=
+endfunction
 "}}}
 
 "{{{-- lightline configuration -----------------------------------------------------
