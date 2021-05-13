@@ -83,6 +83,8 @@ set autoread  "reload file by :e
 
 set foldmethod=marker
 
+set redrawtime=10000
+
 " Cursor line
 set cursorline
 
