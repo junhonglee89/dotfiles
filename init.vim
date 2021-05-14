@@ -170,7 +170,7 @@ map <leader>r :e<CR>
 
 "{{{-- Goyo configuration ----------------------------------------------------------
 "auto-load Goyo for Markdown
-autocmd vimenter *.md Goyo
+"autocmd vimenter *.md Goyo
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 function! s:goyo_enter()
