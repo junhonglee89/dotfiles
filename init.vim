@@ -1,4 +1,8 @@
 "-- Plugin ----------------------------------------------------------------------
+if exists('g:vscode')
+    " VSCode extension
+else
+    " ordinary Neovim
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Tools
@@ -399,3 +403,5 @@ let g:mkdp_page_title = '「${name}」'
 " these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
 "}}}
+endif
+
