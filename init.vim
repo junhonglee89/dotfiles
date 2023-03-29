@@ -1,8 +1,9 @@
-"-- Plugin ----------------------------------------------------------------------
 if exists('g:vscode')
     " VSCode extension
+set clipboard+=unnamedplus
 else
     " ordinary Neovim
+"-- Plugin ----------------------------------------------------------------------
 " Plugins will be downloaded under the specified directory.
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 " Tools
@@ -17,7 +18,7 @@ call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 "    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'godlygeek/tabular'
     Plug 'plasticboy/vim-markdown'
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#insktall() }, 'for': ['markdown', 'vim-plug']}
 " Status bar
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
